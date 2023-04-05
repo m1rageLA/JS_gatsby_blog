@@ -24,17 +24,15 @@ const IndexPage = ({ data }) => (
               <p>{post.node.data.description.text}</p>
             </div>
             <div class="meta">
-              <p>Date: {post.node.data.date}</p>
-              <a href="#" class="author"><span class="name">{post.node.data.category.text}</span><StaticImage width={50} src="../images/avatar.jpg" alt="" /></a>
+                  <a href="#" class="image featured">
+                    <Link to={`/categories/${post.node.uid}`}>
+                        <GatsbyImage class="blockImage"
+                          image={post.node.data.image.gatsbyImageData}
+                          alt={post.node.data.image.alt}/>
+                    </Link>
+                </a>
             </div>
           </header>
-          <a href="#" class="image featured">
-          <Link to={`/categories/${post.node.uid}`}>
-              <GatsbyImage class="blockImage"
-                image={post.node.data.image.gatsbyImageData}
-                alt={post.node.data.image.alt}/>
-          </Link>
-          </a>
          
           <footer>
             <ul class="actions">
@@ -70,7 +68,13 @@ const IndexPage = ({ data }) => (
                     <h3><a>{post.node.data.title.text}</a></h3>
                     <p>Date: {post.node.data.date}</p>
                   </header>
-                  <a href="#" class="image"><StaticImage src="../images/avatar.jpg" alt="" /></a>
+                  <a href="#" class="image featured">
+                    <Link to={`/categories/${post.node.uid}`}>
+                        <GatsbyImage class="blockImage"
+                          image={post.node.data.image.gatsbyImageData}
+                          alt={post.node.data.image.alt}/>
+                    </Link>
+                </a>
                 </article>
               </li>
             </ul>

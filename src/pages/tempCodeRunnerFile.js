@@ -9,6 +9,7 @@ import * as styles from "../components/index.module.css"
 import "../components/ind.css"
 
 
+
 const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
 const IndexPage = ({ data }) => (
@@ -20,23 +21,23 @@ const IndexPage = ({ data }) => (
           <header>
             <div class="title">
               <h2>{post.node.data.title.text}</h2>
-              <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+              <p>{post.node.data.description.text}</p>
             </div>
             <div class="meta">
-              <p>Date: {post.node.data.date}</p>
-              <a href="#" class="author"><span class="name">Jane Doe</span><StaticImage width={50} src="../images/avatar.jpg" alt="" /></a>
+                  <a href="#" class="image featured">
+                    <Link to={`/categories/${post.node.uid}`}>
+                        <GatsbyImage class="blockImage"
+                          image={post.node.data.image.gatsbyImageData}
+                          alt={post.node.data.image.alt}/>
+                    </Link>
+                </a>
             </div>
           </header>
-          <a href="#" class="image featured">
-          <GatsbyImage class="blockImage"
-            image={post.node.data.image.gatsbyImageData}
-            alt={post.node.data.image.alt}/>
-          </a>
          
           <footer>
             <ul class="actions">
               <li>
-                <Link to="page-2"><a href="#" class="button big">Reading</a></Link>
+              <Link to={`/categories/${post.node.uid}`}><a href="#" class="button big">Reading</a></Link>
               </li>
             </ul>
             <ul class="stats">
@@ -67,7 +68,13 @@ const IndexPage = ({ data }) => (
                     <h3><a>{post.node.data.title.text}</a></h3>
                     <p>Date: {post.node.data.date}</p>
                   </header>
-                  <a href="#" class="image"><StaticImage src="../images/avatar.jpg" alt="" /></a>
+                  <a href="#" class="image featured">
+                    <Link to={`/categories/${post.node.uid}`}>
+                        <GatsbyImage class="blockImage"
+                          image={post.node.data.image.gatsbyImageData}
+                          alt={post.node.data.image.alt}/>
+                    </Link>
+                </a>
                 </article>
               </li>
             </ul>
@@ -105,13 +112,19 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date(formatString: "DD.MM.YYYY")
+            date(formatString: "")
             image {
               alt
               gatsbyImageData(layout: FULL_WIDTH)
             }
             content {
               html
+            }
+            description {
+              text
+            }
+            category {
+              text
             }
           }
         }
