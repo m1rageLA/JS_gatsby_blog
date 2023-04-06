@@ -8,7 +8,7 @@ const Header = ({ siteTitle }) => (
     <ul>
       <li><Link to="/">Home</Link></li>
       <li><Link to="/categories">Categories</Link></li>
-      <li><Link to="/main.js">All articles</Link></li>
+      <li><Link to="/articles">All articles</Link></li>
     </ul>
   </nav>
   <nav class="main">
